@@ -8,16 +8,20 @@ docker-compose.override.yml
 compose.override.yml
 
 # configs
-config/config.cache
-config/config.cache-*
-config/config.cache-shm
-config/config.cache-wal
-
+config/UUID
+config/config.cache*
 config/logs/
 config/missing/
-config/UUID
+config/overlays/temp.jpg
 
-# Logs
+# Synology metadata
+**/@eaDir/
+
+# Plex poster backups
+config/overlays/* Original Posters/
+
+# Local audit/backup archives
+kometa-*.tar.gz
 *.log
 logs/
 

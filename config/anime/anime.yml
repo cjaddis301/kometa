@@ -1,0 +1,60 @@
+# Anime Collections
+templates:
+  search:
+    collection_order: custom
+    sync_mode: sync
+    sort_title: "!A <<collection_name>>"
+
+collections:
+  Top Rated Anime:
+    template: { name: search }
+    imdb_search:
+      type: tv_series 
+      genre: animation
+      rating.gte: 7  
+      votes.gte: 50000
+      sort_by: rating.desc 
+      country.origin: jp
+      limit: 100  
+  Most Popular Anime:
+    template: { name: search }
+    imdb_search:
+      type: tv_series
+      genre: animation
+      votes.gte: 10000  
+      sort_by: popularity.desc
+      country.origin: jp
+      limit: 100   
+  New & Trending Anime:
+    template: { name: search }
+    imdb_search:
+      type: tv_series
+      genre: animation
+      release.after: "2026-01-01"  # Review annually; IMDb Search requires an explicit date
+      sort_by: popularity.desc
+      country.origin: jp
+      limit: 100     
+  Classic Anime:
+    template: { name: search }
+    imdb_search:
+      type: tv_series
+      genre: animation
+      release.before: "1999-12-31"  # Filters for anime released before 2000
+      sort_by: rating.desc
+      country.origin: jp
+      limit: 100
+  Highly Voted Anime:
+    template: { name: search }
+    imdb_search:
+      type: tv_series
+      genre: animation
+      votes.gte: 200000  # Filters anime with 200,000+ votes
+      sort_by: votes.desc  
+      country.origin: jp
+      limit: 100  
+  Anime Unmatched:
+    plex_collectionless:
+       exclude: Test
+    collection_order: alpha
+    sync_mode: sync
+    sort_title: "!Z <<name>>"

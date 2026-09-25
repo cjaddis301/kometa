@@ -1,0 +1,244 @@
+#####################################
+#     Custom Collection Templates   #
+#####################################
+templates:
+  Movies:
+    optional:
+      - collection
+      - movie
+    tmdb_collection_details: <<collection>>
+    tmdb_movie: <<movie>>
+    sort_title: "<<collection_name>>" 
+    collection_order: release     
+    sync_mode: sync
+
+collections:
+#####################################
+#     General Movies Collections    #
+#####################################
+  28 Days/Weeks/Years Later: 
+    template: {name: Movies, collection: 1565}
+  101 Dalmatians:
+    template: {name: Movies, collection: "100693, 124916"}
+  "300":
+    template: {name: Movies, collection: 125570}  
+  Alice in Wonderland:
+    template: {name: Movies, collection: 261307}
+  Alien:
+    template: {name: Movies, collection: "8091, 135416, 115762", movie: 945961}    
+  Alvin and the Chipmunks:
+    template: {name: Movies, collection: 167613}    
+  American Pie:
+    template: {name: Movies, collection: 2806}
+  American Pie Spin-off:
+    template: {name: Movies, collection: 298820}
+  Angry Birds:
+    template: {name: Movies, collection: 531315}    
+  Austin Powers:
+    template: {name: Movies, collection: 1006}
+  Back to the Future:
+    template: {name: Movies, collection: 264}
+  Bad Boys:
+    template: {name: Movies, collection: 14890}
+  Bad Santa:
+    template: {name: Movies, collection: 423173}    
+  Barbershop:
+    template: {name: Movies, collection: 176097}
+  Batman:
+    template: {name: Movies, collection: "120794,263,987044,948485"}
+  Batman Animated:
+    template: {name: Movies, collection: "421904,248534,334996"}
+  Beverly Hills Cop:
+    template: {name: Movies, collection: 85861}
+  Blade:
+    template: {name: Movies, collection: 735}
+  Blade Runner:
+    template: {name: Movies, collection: 422837}
+  Boondock Saints:
+    template: {name: Movies, collection: 87186}    
+  Bourne:
+    template: {name: Movies, collection: 31562}
+  Brother Bear:
+    template: {name: Movies, collection: 96472}
+  Creed:
+    template: {name: Movies, collection: 553717}
+  Deadpool:
+    template: {name: Movies, collection: 448150}
+  Death Race:
+    template: {name: Movies, collection: 86116}
+  Despicable Me:
+    template: {name: Movies, collection: "86066, 544669"}
+  Die Hard:
+    template: {name: Movies, collection: 1570}
+  Divergent:
+    template: {name: Movies, collection: 283579}
+  Ernest:
+    template: {name: Movies, collection: 330555}
+  Equalizer:
+    template: {name: Movies, collection: 523855}    
+  Fantastic Beasts:
+    template: {name: Movies, collection: 435259}
+  Friday:
+    template: {name: Movies, collection: 43563}
+  Garfield:
+    template: {name: Movies, collection: "86115, 373918"}    
+  Ghostbusters:
+    template: {name: Movies, collection: 2980}
+  Godzilla (MonsterVerse):
+    template: {name: Movies, collection: 535313, movie: 293167}
+  Gremlins:
+    template: {name: Movies, collection: 89151}
+  Harold & Kumar:
+    template: {name: Movies, collection: 30663}
+  Has Fallen:
+    template: {name: Movies, collection: 386534}    
+  Harry Potter:
+    template: {name: Movies, collection: 1241}
+  Hellboy:
+    template: {name: Movies, collection: "17235, 123203", movie: 456740}
+  Ice Age:
+    template: {name: Movies, collection: 8354, movie: "79218, 717095, 387893"}
+  Indiana Jones:
+    template: {name: Movies, collection: 84}
+  James Bond:
+    template: {name: Movies, collection: 645}
+  Jaws:
+    template: {name: Movies, collection: 2366}
+  John Wick:
+    template: {name: Movies, collection: 404609}
+  Justice League Animated:
+    template: {name: Movies, collection: "256287,702342,1178688"}
+  Jurassic Park:
+    template: {name: Movies, collection: 328}
+  Karate Kid:
+    template: {name: Movies, collection: 8580}
+  Kill Bill:
+    template: {name: Movies, collection: 2883}
+  Kingsman:
+    template: {name: Movies, collection: 391860}
+  Land Before Time:
+    template: {name: Movies, collection: 19163}
+  Lethal Weapon:
+    template: {name: Movies, collection: 945}
+  Lilo & Stitch:
+    template: {name: Movies, collection: 97461}    
+  Mad Max:
+    template: {name: Movies, collection: 8945}
+  Madea:
+    template: {name: Movies, collection: 534673}
+  Matrix:
+    template: {name: Movies, collection: 2344}
+  Meet the Parents:
+    template: {name: Movies, collection: 51509}
+  Men in Black:
+    template: {name: Movies, collection: 86055, movie: 479455}
+  Mortal Kombat:
+    template: {name: Movies, collection: "9818,848690,931431"}
+  Mission Impossible:
+    template: {name: Movies, collection: 87359}
+  National Lampoon:
+    template: {name: Movies, collection: 108693}
+  Night at the Museum:
+    template: {name: Movies, collection: 85943}    
+  Now You See Me:
+    template: {name: Movies, collection: 382685}
+  Ocean's:
+    template: {name: Movies, collection: 304, movie: 402900}    
+  Pacific Rim:
+    template: {name: Movies, collection: 363369}
+  Paddington:
+    template: {name: Movies, collection: 488924}
+  Pirates of the Caribbean:
+    template: {name: Movies, collection: 295}
+  Pitch Perfect:
+    template: {name: Movies, collection: 306031}    
+  Planet of the Apes:
+    template: {name: Movies, collection: 173710}
+  Police Academy:
+    template: {name: Movies, collection: 9338}
+  Predator:
+    template: {name: Movies, collection: 399}    
+  Rambo:
+    template: {name: Movies, collection: 5039}
+  Resident Evil:
+    template: {name: Movies, collection: "17255,133352"}
+  RoboCop:
+    template: {name: Movies, collection: 5547}
+  Rocky:
+    template: {name: Movies, collection: 1575}
+  Rush Hour:
+    template: {name: Movies, collection: 90863}
+  Santa Clause:
+    template: {name: Movies, collection: 53159}    
+  Saw:
+    template: {name: Movies, collection: 656}
+  Scary Movies:
+    template: {name: Movies, collection: 4246}
+  Sherlock Holmes:
+    template: {name: Movies, collection: 102322}
+  Shrek:
+    template: {name: Movies, collection: "2150, 94602"}
+  Spider-Man:
+    template: {name: Movies, collection: "556,125574,531241,573436"}
+  Star Trek - Alternate Reality:
+    template: {name: Movies, collection: 115575}
+  Star Trek - Next Generation:
+    template: {name: Movies, collection: 115570}
+  Star Trek - Original Series:
+    template: {name: Movies, collection: 151}
+  Star Wars:
+    template: {name: Movies, collection: "10,1415515"}
+  Superman:
+    template: {name: Movies, collection: 8537}
+  Superman Animated:
+    template: {name: Movies, collection: "290933,593251,404770"}
+  Super Troopers:
+    template: {name: Movies, collection: 449462}
+  Taken:
+    template: {name: Movies, collection: 135483}
+  Terminator:
+    template: {name: Movies, collection: 528}
+  The Chronicles of Narnia:
+    template: {name: Movies, collection: 420}
+  The Chronicles of Riddick:
+    template: {name: Movies, collection: 2794}
+  The Expendables:
+    template: {name: Movies, collection: 126125}
+  The Fast and the Furious:
+    template: {name: Movies, collection: 9485}
+  The Godfather:
+    template: {name: Movies, collection: 230}
+  The Hangover:
+    template: {name: Movies, collection: 86119}
+  The Hobbit:
+    template: {name: Movies, collection: 121938}
+  The Hunger Games:
+    template: {name: Movies, collection: 131635}
+  The Lord of the Rings:
+    template: {name: Movies, collection: 119}
+  The Maze Runner:
+    template: {name: Movies, collection: 295130}
+  The Mummy:
+    template: {name: Movies, collection: 1733}
+  The Transporter:
+    template: {name: Movies, collection: 9518, movie: 287948}
+  Teenage Mutant Ninja Turtles:
+    template: {name: Movies, collection: "1582,401562,1156855"}
+  Transformers:
+    template: {name: Movies, collection: 8650}
+  Underworld:
+    template: {name: Movies, collection: 2326}
+  Venom:
+    template: {name: Movies, collection: 558216}
+  Wizarding World:
+    template: {name: Movies, collection: "1241,435259"}  
+  X-Men:
+    template: {name: Movies, collection: "748,453993,448150"}
+  xXx:
+    template: {name: Movies, collection: 52785}
+  Movies Unmatched:
+    plex_collectionless:
+       exclude: Test
+    collection_order: alpha
+    sync_mode: sync
+    sort_title: "!Z <<name>>"

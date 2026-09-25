@@ -1,0 +1,53 @@
+#####################################
+#     Custom Collection Template    #
+#####################################
+templates:
+  network:
+    optional:
+      - network
+    tmdb_network: <<network>>
+    url_poster: https://theposterdb.com/api/assets/<<poster>>
+    sort_title: <<collection_name>>
+    collection_order: title.asc
+    collection_mode: hide
+    sync_mode: sync
+
+collections:
+  ABC:
+    template: { name: network, network: "2, 75, 2791", poster: 204735}
+  Adult Swim:
+    template: { name: network, network: 80, poster: 204736}
+  AMC:
+    template: { name: network, network: "174, 4661", poster: 204737}
+  Cartoon Network:
+    template: { name: network, network: 56, poster: 204731}
+  CBS:
+    template: { name: network, network: "16, 1709, 2621", poster: 204730}
+  Comedy Central:
+    template: { name: network, network: 47, poster: 204743}
+  Disney Plus:
+    template: { name: network, network: "2739,142,44,2991", poster: 212622}
+  FOX:
+    template: { name: network, network: "19, 2686, 875, 45, 87, 131, 2317, 243, 2320", poster: 204746}
+  FX:
+    template: { name: network, network: 88, poster: 212627}
+  HBO:
+    template: { name: network, network: "49, 5484, 5485, 3186, 2593", poster: 204710}
+  NBC:
+    template: { name: network, network: "6, 413", poster: 204715}
+  Netflix:
+    template: { name: network, network: 213, poster: 204716}
+  Nickelodeon:
+    template: { name: network, network: 13, poster: 204717}
+  Prime:
+    template: { name: network, network: 1024, poster: 204721}
+  Showtime:
+    template: { name: network, network: 67, poster: 204720}
+  Starz:
+    template: { name: network, network: "318, 758", poster: 204723}
+  The CW:
+    template: { name: network, network: 71, poster: 204744}
+  Warner Bros:
+    template: { name: network, network: 21, poster: 212632}
+  USA:
+    template: { name: network, network: 30, poster: 204733}

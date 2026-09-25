@@ -1,0 +1,44 @@
+templates:
+  Studio:
+    optional:
+      - company
+    tmdb_company: <<company>>
+    sort_title: "<<collection_name>>" 
+    url_poster: https://theposterdb.com/api/assets/<<poster>>
+    sync_mode: sync
+    collection_order: release
+
+collections:
+######################################################
+#                Studio Collections                  #
+######################################################
+  DC Extended Universe:
+    template: {name: Studio, poster: 40928 }
+    imdb_search: 
+      list: ls077827588
+    summary: The DC Extended Universe (DCEU) is a media franchise and shared universe centered on superheroes from DC Comics.
+  Disney Animation Studios:
+    template: { name: Studio, company: 6125, poster: 11782 }
+  Disney Pictures:
+    template: { name: Studio, company: 2, poster: 11782 }
+  DreamWorks:
+    template: { name: Studio, company: 521, poster: 6383 }
+  Happy Madison:
+    template: { name: Studio, company: 878, poster: 102233 }
+  Illumination Entertainment:
+    template: { name: Studio, company: 6704, poster: 274057 }
+  Lucasfilm:
+    template: { name: Studio, company: 1, poster: 294942 }
+  Marvel Cinematic Universe:
+    template: { name: Studio, poster: 162885 }
+    imdb_search: 
+      list: ls009410711
+    summary: A collection of movies created by Marvel Studios as part of the Marvel Cinematic Universe.
+  Pixar:
+    template: { name: Studio, company: 3, poster: 36071 }
+  Sony Pictures Animation:
+    template: { name: Studio, company: 2251, poster: 227014 }
+  Studio Ghibli:
+    template: { name: Studio, company: 10342, poster: 32223 }
+  Warner Animation Group:
+    template: { name: Studio, company: 25120, poster: 57891 }
