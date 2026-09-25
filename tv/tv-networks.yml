@@ -8,18 +8,10 @@ templates:
     tmdb_network: <<network>>
     url_poster: https://theposterdb.com/api/assets/<<poster>>
     sort_title: <<collection_name>>
-    collection_order: alpha
+    collection_order: title.asc
     collection_mode: hide
     sync_mode: sync
-  TV Collection:
-    optional:
-      - imdb_list
-      - tvdb_show
-    imdb_list: <<imdb_list>>
-    tvdb_show: <<tvdb_show>>
-    sort_title: <<collection_name>>
-    collection_order: release
-    collection_mode: hide
+    schedule: weekly(sunday)
 
 collections:
   ABC:
@@ -32,8 +24,6 @@ collections:
     template: { name: network, network: 56, poster: 204731}
   CBS:
     template: { name: network, network: "16, 1709, 2621", poster: 204730}
-  Cinemax:
-    template: { name: network, network: 359, poster: 204732}
   Comedy Central:
     template: { name: network, network: 47, poster: 204743}
   Disney Plus:
@@ -50,8 +40,6 @@ collections:
     template: { name: network, network: 213, poster: 204716}
   Nickelodeon:
     template: { name: network, network: 13, poster: 204717}
-  Peacock:
-    template: { name: network, network: 3353, poster: 212631}
   Prime:
     template: { name: network, network: 1024, poster: 204721}
   Showtime:
