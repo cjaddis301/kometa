@@ -1,0 +1,31 @@
+#####################################################
+#              Decade Collections                   #
+#####################################################
+templates:
+  Decades:
+    smart_label: title.asc
+    imdb_list:
+      url: https://www.imdb.com/search/title/?title_type=feature,short&release_date=<<start_date>>-01-01,<<end_date>>-12-31&num_votes=10000,&sort=user_rating,desc&languages=en
+      limit: 150
+    sort_title: "!B Best_of_<<start_date>>" 
+    url_poster: <<poster>>
+    url_background: https://wallpapercave.com/wp/wp4016022.jpg
+    sync_mode: sync
+    collection_order: custom
+    collection_mode: hide
+
+collections:
+  Best of 1960s:
+    template: {name: Decades, start_date: 1960, end_date: 1969, poster: https://theposterdb.com/api/assets/105331}
+  Best of 1970s:
+    template: {name: Decades, start_date: 1970, end_date: 1979, poster: https://wallpapercave.com/wp/wp4016022.jpg}
+  Best of 1980s:
+    template: {name: Decades, start_date: 1980, end_date: 1989, poster: https://theposterdb.com/api/assets/105333}
+  Best of 1990s:
+    template: {name: Decades, start_date: 1990, end_date: 1999, poster: https://theposterdb.com/api/assets/105334}
+  Best of 2000s:
+    template: {name: Decades, start_date: 2000, end_date: 2009, poster: https://theposterdb.com/api/assets/398496}
+  Best of 2010s:
+    template: {name: Decades, start_date: 2010, end_date: 2019, poster: https://theposterdb.com/api/assets/398491}
+  Best of 2020s:
+    template: {name: Decades, start_date: 2020, end_date: 2029, poster: https://image.tmdb.org/t/p/original//jHdDEkYFKeB6yd2FxaCz1ushV32.jpg}

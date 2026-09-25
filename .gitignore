@@ -1,0 +1,51 @@
+# Secrets / environment
+.env
+.env.*
+!.env.example
+
+# Local overrides
+docker-compose.override.yml
+compose.override.yml
+
+# configs
+config/config.cache
+config/config.cache-*
+config/config.cache-shm
+config/config.cache-wal
+
+config/logs/
+config/missing/
+config/UUID
+
+# Logs
+*.log
+logs/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Temporary / backup files
+*.tmp
+*.bak
+*.old
+*~
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz

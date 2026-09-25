@@ -1,0 +1,172 @@
+#####################################
+#     Custom Collection Templates   #
+#####################################
+templates:
+  Movies:
+    optional:
+      - collection
+      - tmdb_movie
+      - tmdb_list
+    tmdb_collection_details: <<collection>>
+    tmdb_movie: <<tmdb_movie>>
+    tmdb_list: <<tmdb_list>>
+    sort_title: "!A <<collection_name>>" 
+    collection_order: release     
+    sync_mode: sync
+    schedule: daily
+
+collections:
+#####################################
+#     General Movies Collections    #
+#####################################
+  American Pie:
+    template: {name: Movies, collection: 2806}
+  American Pie Spin-off:
+    template: {name: Movies, collection: 298820}
+  Austin Powers:
+    template: {name: Movies, collection: 1006, poster: https://theposterdb.com/api/assets/163540}
+  Back to the Future:
+    template: {name: Movies, collection: 264, poster: https://theposterdb.com/api/assets/163128}
+  Bad Boys:
+    template: {name: Movies, collection: 14890, poster: https://theposterdb.com/api/assets/163544}
+  Barbershop:
+    template: {name: Movies, collection: 176097, movie: 14177, poster: https://theposterdb.com/api/assets/166228}
+  Batman:
+    template: {name: Movies, collection: "120794,263,987044,948485"}
+  Batman Animated:
+    template: {name: Movies, collection: "421904,248534,334996"}
+  Beverly Hills Cop:
+    template: {name: Movies, collection: 85861, poster: https://theposterdb.com/api/assets/163980}
+  Blade:
+    template: {name: Movies, collection: 735}
+  Bourne:
+    template: {name: Movies, collection: 31562, poster: https://theposterdb.com/api/assets/164761}
+  Creed:
+    template: {name: Movies, collection: 553717}
+  Deadpool:
+    template: {name: Movies, collection: 448150}
+  Death Race:
+    template: {name: Movies, collection: 86116, poster: https://theposterdb.com/api/assets/160936}
+  Die Hard:
+    template: {name: Movies, collection: 1570}
+  Divergent:
+    template: {name: Movies, collection: 283579, poster: https://theposterdb.com/api/assets/163697}
+  Ernest:
+    template: {name: Movies, collection: 330555, poster: https://theposterdb.com/api/assets/163384}
+  Fantastic Beasts:
+    template: {name: Movies, collection: 435259}
+  Friday:
+    template: {name: Movies, collection: 43563, poster: https://theposterdb.com/api/assets/166239}
+  Ghostbusters:
+    template: {name: Movies, collection: 2980, movie: 43074, poster: https://theposterdb.com/api/assets/174560}
+  Godzilla (MonsterVerse):
+    template: {name: Movies, collection: 535313, movie: 293167, poster: https://theposterdb.com/api/assets/160971}
+  Gremlins:
+    template: {name: Movies, collection: 89151, poster: https://theposterdb.com/api/assets/161052}
+  Harry Potter:
+    template: {name: Movies, collection: 1241}
+  Indiana Jones:
+    template: {name: Movies, collection: 84}
+  James Bond:
+    template: {name: Movies, collection: 645}
+  Jaws:
+    template: {name: Movies, collection: 2366, poster: https://theposterdb.com/api/assets/161117}
+  John Wick:
+    template: {name: Movies, collection: 404609}
+  Justice League Animated:
+    template: {name: Movies, collection: "256287,702342,1178688"}
+  Jurassic Park:
+    template: {name: Movies, collection: 328}
+  Lethal Weapon:
+    template: {name: Movies, collection: 945, poster: https://theposterdb.com/api/assets/164803}
+  Mad Max:
+    template: {name: Movies, collection: 8945, poster: https://theposterdb.com/api/assets/184549}
+  Matrix:
+    template: {name: Movies, collection: 2344}
+  Meet the Parents:
+    template: {name: Movies, collection: 51509, poster: https://theposterdb.com/api/assets/166252}
+  Men in Black:
+    template: {name: Movies, collection: 86055}
+  Mortal Kombat:
+    template: {name: ColleMoviesction, collection: 9818, movie: "664767, 460465", poster: https://theposterdb.com/api/assets/160972}
+  National Lampoon:
+    template: {name: Movies, collection: 108693, poster: https://theposterdb.com/api/assets/165424}
+  Pirates of the Caribbean:
+    template: {name: Movies, collection: 295}
+  Planet of the Apes:
+    template: {name: Movies, collection: 173710, poster: https://theposterdb.com/api/assets/184312}
+  Police Academy:
+    template: {name: Movies, collection: 9338}
+  Rambo:
+    template: {name: Movies, collection: 5039}
+  Resident Evil:
+    template: {name: Movies, collection: 17255, poster: https://theposterdb.com/api/assets/161290}
+  RoboCop:
+    template: {name: Movies, collection: 5547, poster: https://theposterdb.com/api/assets/164016}
+  Rocky:
+    template: {name: Movies, collection: 1575}
+  Saw:
+    template: {name: Movies, collection: 656}
+  Scary Movies:
+    template: {name: Movies, collection: 4246}
+  Shrek:
+    template: {name: Movies, collection: 2150}
+  Spider-Man:
+    template: {name: Movies, collection: "556,125574,531241,573436", summary: A collection of all the mainstream Spider-Man movies.}
+  Star Trek - Alternate Reality:
+    template: {name: Movies, collection: 115575}
+  Star Trek - Next Generation:
+    template: {name: Movies, collection: 115570}
+  Star Trek - Original Series:
+    template: {name: Movies, collection: 151}
+  Star Wars:
+    template: {name: Movies, collection: 10}
+  Superman:
+    template: {name: Movies, collection: 8537}
+  Superman Animated:
+    template: {name: Movies, collection: "290933,593251,404770"}
+  Taken:
+    template: {name: Movies, collection: 135483}
+  Terminator:
+    template: {name: Movies, collection: 528}
+  The Chronicles of Narnia:
+    template: {name: Movies, collection: 420, poster: https://theposterdb.com/api/assets/162017}
+  The Chronicles of Riddick:
+    template: {name: Movies, collection: 2794, poster: https://theposterdb.com/api/assets/163647}
+  The Expendables:
+    template: {name: Movies, collection: 126125, poster: https://theposterdb.com/api/assets/164780}
+  The Fast and the Furious:
+    template: {name: Movies, collection: 9485}
+  The Godfather:
+    template: {name: Movies, collection: 230}
+  The Hangover:
+    template: {name: Movies, collection: 86119, poster: https://theposterdb.com/api/assets/165414}
+  The Hobbit:
+    template: {name: Movies, collection: 121938}
+  The Hunger Games:
+    template: {name: Movies, collection: 131635}
+  The Lord of the Rings:
+    template: {name: Movies, collection: 119}
+  The Maze Runner:
+    template: {name: Movies, collection: 295130, poster: https://theposterdb.com/api/assets/160968}
+  The Mummy:
+    template: {name: Movies, collection: 1733}
+  The Transporter:
+    template: {name: Movies, collection: 9518}
+  Teenage Mutant Ninja Turtles:
+    template: {name: Movies, collection: "1582, 401562", poster: https://theposterdb.com/api/assets/162404}
+  Transformers:
+    template: {name: Movies, collection: 8650, poster: https://theposterdb.com/api/assets/160997}
+  Underworld:
+    template: {name: Movies, collection: 2326, poster: https://theposterdb.com/api/assets/161852}
+  Venom:
+    template: {name: Movies, collection: 558216}
+  X-Men:
+    template: {name: Movies, collection: "748,453993,448150"}
+  xXx:
+    template: {name: Movies, collection: 52785, poster: https://theposterdb.com/api/assets/164850}
+  Unmatched:
+    plex_collectionless:
+       exclude: Test
+    sort_title: ~_Unmatched
+    collection_order: alpha
