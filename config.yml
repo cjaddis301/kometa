@@ -136,6 +136,7 @@ settings:
   - overlays
   overlay_artwork_filetype: jpg
   overlay_artwork_quality:
+  show_unfiltered: false
 webhooks:
   error: notifiarr
   version: notifiarr

@@ -3,7 +3,7 @@ templates:
     optional:
       - company
     tmdb_company: <<company>>
-    sort_title: "!A <<collection_name>>" 
+    sort_title: "<<collection_name>>" 
     url_poster: https://theposterdb.com/api/assets/<<poster>>
     sync_mode: sync
     collection_order: release

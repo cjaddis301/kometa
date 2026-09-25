@@ -10,7 +10,7 @@ templates:
       votes.gte: 10000
       sort_by: rating.desc
       limit: 150
-    sort_title: "!B Best_of_<<start_date>>" 
+    sort_title: "Best_of_<<start_date>>" 
     url_poster: https://theposterdb.com/api/assets/<<poster>>
     url_background: https://wallpapercave.com/wp/wp4016022.jpg
     sync_mode: sync

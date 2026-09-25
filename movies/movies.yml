@@ -8,7 +8,7 @@ templates:
       - movie
     tmdb_collection_details: <<collection>>
     tmdb_movie: <<movie>>
-    sort_title: "!A <<collection_name>>" 
+    sort_title: "<<collection_name>>" 
     collection_order: release     
     sync_mode: sync
     schedule: daily
@@ -17,6 +17,8 @@ collections:
 #####################################
 #     General Movies Collections    #
 #####################################
+  28 Days/Weeks/Years Later: 
+    template: {name: Movies, collection: 1565}
   101 Dalmatians:
     template: {name: Movies, collection: "100693, 124916"}
   "300":
@@ -115,12 +117,16 @@ collections:
     template: {name: Movies, collection: 2883}
   Kingsman:
     template: {name: Movies, collection: 391860}
+  Land Before Time:
+    template: {name: Movies, collection: 19163}
   Lethal Weapon:
     template: {name: Movies, collection: 945}
   Lilo & Stitch:
     template: {name: Movies, collection: 97461}    
   Mad Max:
     template: {name: Movies, collection: 8945}
+  Madea:
+    template: {name: Movies, collection: 534673}
   Matrix:
     template: {name: Movies, collection: 2344}
   Meet the Parents:
@@ -135,6 +141,8 @@ collections:
     template: {name: Movies, collection: 108693}
   Night at the Museum:
     template: {name: Movies, collection: 85943}    
+  Now You See Me:
+    template: {name: Movies, collection: 382685}
   Ocean's:
     template: {name: Movies, collection: 304, movie: 402900}    
   Pacific Rim:
