@@ -1,7 +1,7 @@
 # Anime Collections
 templates:
   search:
-    collection_order: release.asc
+    collection_order: custom
     sync_mode: sync
     sort_title: "!A <<collection_name>>"
 
@@ -30,7 +30,7 @@ collections:
     imdb_search:
       type: tv_series
       genre: animation
-      release.after: "2024-01-01"  # Filters for recent releases
+      release.after: "2026-01-01"  # Review annually; IMDb Search requires an explicit date
       sort_by: popularity.desc
       country.origin: jp
       limit: 100     

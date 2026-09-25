@@ -1,0 +1,14 @@
+playlists:
+  MCU Movies (Timeline Order):
+    libraries: Movies
+    sync_mode: sync
+    cache_builders: 1
+    imdb_list: https://www.imdb.com/list/ls539646485/
+    summary: Marvel Cinematic Universe movies in timeline order.
+
+  MCU TV (Timeline Order):
+    libraries: TV Shows
+    sync_mode: sync
+    cache_builders: 1
+    imdb_list: https://www.imdb.com/list/ls539646485/
+    summary: Marvel Cinematic Universe television episodes in timeline order.

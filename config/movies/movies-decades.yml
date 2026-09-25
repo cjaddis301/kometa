@@ -16,7 +16,6 @@ templates:
     sync_mode: sync
     collection_order: custom
     collection_mode: hide
-    schedule: weekly(sunday)
 
 collections:
   Best of 1950s:

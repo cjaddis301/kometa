@@ -1,19 +1,23 @@
-# Kometa Docker Compose Project
+# Kometa
 
-Runs **Kometa** on Synology DSM using Docker Compose / Synology Container Manager.
+Kometa runs on Synology DSM as a Docker Compose project and manages Plex collections and overlays.
 
-Kometa manages Plex collections, metadata, and overlays while keeping deployment configuration, persistent Kometa configuration, and secrets separate.
-
-## Project Structure
+## Layout
 
 ```text
-/volume1/docker/kometa/
-├── compose.yaml
+kometa/
+├── compose.yml
 ├── .env
+├── .env.example
+├── .gitignore
 ├── README.md
+├── docs/
+│   ├── AUDIT.md
+│   └── COLLECTION-INVENTORY.md
+├── scripts/
+│   └── validate.sh
 └── config/
     ├── config.yml
-    ├── config.cache
     ├── anime/
     ├── movies/
     ├── tv/
@@ -22,429 +26,174 @@ Kometa manages Plex collections, metadata, and overlays while keeping deployment
     └── logs/
 ```
 
-The host directory:
+`./config` is mounted into the container as `/config`.
 
-```text
-/volume1/docker/kometa/config
-```
+This repository contains the complete audited **configuration**. The source audit did not include the NAS's existing JMXD PNG artwork or Plex asset artwork, so those binary files are not present here. See `config/overlays/jmxd/README.md` before treating the repository as a full disaster-recovery copy.
 
-is mounted inside the container as:
+## Environment
 
-```text
-/config
-```
-
-For example:
-
-```text
-Host:
-  /volume1/docker/kometa/config/movies/movies.yml
-
-Container:
-  /config/movies/movies.yml
-```
-
-Use container-visible paths in Kometa configuration files.
-
-## Docker Compose
-
-```yaml
-name: kometa
-
-services:
-  kometa:
-    image: kometateam/kometa:latest
-    container_name: kometa
-
-    env_file:
-      - .env
-
-    environment:
-      TZ: America/New_York
-      KOMETA_TIMES: "03:00"
-
-    volumes:
-      - ./config:/config:rw
-
-    restart: unless-stopped
-```
-
-Do not permanently configure:
-
-```yaml
-KOMETA_RUN: "true"
-```
-
-Use a manual Compose run instead when Kometa should execute immediately.
-
-## Secrets
-
-Secrets are stored in `.env` rather than directly in `config.yml`.
+Create `.env` from `.env.example` and provide the real values:
 
 ```env
-KOMETA_plextoken=YOUR_PLEX_TOKEN
-KOMETA_tmdbkey=YOUR_TMDB_API_KEY
-KOMETA_githubtoken=YOUR_GITHUB_TOKEN
-KOMETA_notifiarrkey=YOUR_NOTIFIARR_API_KEY
+KOMETA_plextoken=...
+KOMETA_tmdbkey=...
+KOMETA_notifiarrkey=...
 ```
 
-Reference them from `config/config.yml`:
+Confirm the Plex URL is reachable from the Kometa container. Keep `.env` out of Git.
 
-```yaml
-plex:
-  url: http://PLEX_SERVER_IP:32400
-  token: <<plextoken>>
+## Common commands
 
-tmdb:
-  apikey: <<tmdbkey>>
-
-github:
-  token: <<githubtoken>>
-
-notifiarr:
-  apikey: <<notifiarrkey>>
-```
-
-Keep Kometa secret names simple and avoid additional underscores after `KOMETA_`.
-
-### Git Ignore
-
-If this project is version controlled:
-
-```gitignore
-.env
-config/config.cache
-config/logs/
-*.log
-```
-
-Never commit `.env`.
-
-## Current Plex Libraries
-
-Kometa currently manages:
-
-* Anime
-* Movies
-* Stand-up
-* TV Shows
-
-Custom configuration includes:
-
-```text
-config/anime/
-config/movies/
-config/tv/
-config/overlays/jmxd/
-```
-
-The YAML files in those directories are the source of truth for individual collections and overlays.
-
-## Common Commands
-
-Run commands from:
-
-```bash
-cd /volume1/docker/kometa
-```
-
-### Start or Recreate
+Run from `/volume1/docker/kometa`.
 
 ```bash
 sudo docker compose up -d
-```
-
-To fully recreate the persistent container:
-
-```bash
-sudo docker compose down
-sudo docker compose up -d
-```
-
-### Status
-
-```bash
 sudo docker compose ps
-```
-
-### Logs
-
-```bash
 sudo docker compose logs -f kometa
 ```
 
-### Structure Validation
+## Validate
+
+Preferred:
 
 ```bash
-sudo docker compose run --rm kometa \
-  --validate \
-  --validate-level structure
+./scripts/validate.sh
 ```
 
-### Full Validation
+Or manually:
 
 ```bash
+sudo docker compose config -q
+
 sudo docker compose run --rm kometa \
   --validate \
-  --validate-level full
+  --validate-level full \
+  --validate-schemas
+
+sudo docker compose run --rm kometa --validate-dir /config
 ```
 
-A successful validation ends with:
+Validation returns a non-zero exit code for real validation errors. Warnings and schema gaps can still be reported without failing.
 
-```text
-Result: PASSED
-```
+## Manual run
 
-### Manual Run
+After validation passes:
 
 ```bash
 sudo docker compose run --rm kometa --run
 ```
 
-### Update Image
-
-```bash
-sudo docker compose pull
-sudo docker compose up -d
-```
-
-Run full validation after upgrading Kometa.
-
-## Deployment
-
-The project can be deployed from SSH:
-
-```bash
-cd /volume1/docker/kometa
-sudo docker compose up -d
-```
-
-or from Synology:
-
-```text
-DSM
-→ Container Manager
-→ Project
-→ Create
-```
-
-Use:
-
-```text
-Project Name: kometa
-Project Path: /volume1/docker/kometa
-Compose File: compose.yaml
-```
-
-The container uses:
-
-```yaml
-restart: unless-stopped
-```
-
-so Kometa should return automatically after DSM or Container Manager restarts unless it was intentionally stopped.
-
-After DSM upgrades or NAS reboots, verify the project with:
-
-```bash
-sudo docker compose ps
-```
-
 ## Schedule
 
-Kometa currently runs at:
+The persistent container is configured to run Kometa at:
 
 ```text
-03:00 America/New_York
+07:30 America/New_York
 ```
 
-Configured by:
+This is intentionally after the Plex maintenance window previously reported as 02:00–07:00.
 
-```yaml
-environment:
-  TZ: America/New_York
-  KOMETA_TIMES: "03:00"
-```
+File-level schedules still control whether individual collection files participate in a given run:
 
-The persistent container remains running between scheduled executions.
+- Movie Decades: Sunday
+- TV Networks: Sunday
+- other collection files: daily
 
-## Configuration Changes
+These schedules do not start Kometa by themselves.
 
-Configuration files live under:
+## Notifications
 
-```text
-/volume1/docker/kometa/config/
-```
+Notifiarr receives only:
 
-Normal YAML changes do not require rebuilding the container.
+- errors
+- one end-of-run summary
 
-Recommended workflow:
+This intentionally avoids `run_start`, per-collection `changes`, and daily version-message noise.
 
-```text
-Edit configuration
-        ↓
-Full validation
-        ↓
-Manual Kometa run
-        ↓
-Verify Plex
-        ↓
-Allow scheduled runs to continue
-```
-
-Use the commands from **Common Commands** rather than recreating the container for normal YAML changes.
-
-## Secret Changes
-
-Edit:
-
-```text
-/volume1/docker/kometa/.env
-```
-
-Environment changes require recreating the persistent container:
-
-```bash
-sudo docker compose down
-sudo docker compose up -d
-```
-
-Then run full validation.
-
-### Verify Secret Injection
-
-Display only Kometa environment variable names:
-
-```bash
-sudo docker compose run --rm --entrypoint env kometa \
-  | grep '^KOMETA_' \
-  | cut -d= -f1
-```
-
-Expected values include:
-
-```text
-KOMETA_plextoken
-KOMETA_tmdbkey
-KOMETA_githubtoken
-KOMETA_notifiarrkey
-KOMETA_TIMES
-```
-
-To verify one variable without exposing its value:
-
-```bash
-sudo docker compose run --rm --entrypoint sh kometa -c \
-  'test -n "$KOMETA_githubtoken" && echo "GitHub token is set" || echo "GitHub token is EMPTY"'
-```
+Do not rely on Discord/Notifiarr as the only configuration-error detector. Run validation after changes because a sufficiently early YAML/config failure may occur before notification services are usable.
 
 ## Updating Kometa
 
-Pull and recreate:
-
-```bash
-sudo docker compose pull
-sudo docker compose up -d
-```
-
-Then run full validation.
-
-For controlled upgrades, replace:
+The Compose file uses:
 
 ```yaml
 image: kometateam/kometa:latest
 ```
 
-with a specific known-good Kometa image tag.
+`latest` is Kometa's official stable/master Docker branch. Pull upgrades deliberately:
 
-## Known Configuration Notes
-
-### Overlay Artwork Quality
-
-Kometa may report:
-
-```text
-settings sub-attribute overlay_artwork_quality is blank using 90 as default
+```bash
+sudo docker compose pull
+sudo docker compose up -d
+./scripts/validate.sh
 ```
 
-This is not fatal.
-
-It can be made explicit with:
-
-```yaml
-settings:
-  overlay_artwork_quality: 90
-```
-
-### GitHub Authentication
-
-If Kometa reports:
-
-```text
-GitHub Error: The GitHub token specified could not be validated.
-Response: 401 - Unauthorized
-```
-
-verify that `KOMETA_githubtoken` exists using the secret verification command above.
-
-If the variable exists, replace the GitHub Personal Access Token in `.env`, recreate the container, and run full validation.
+If you prefer immutable release pinning, use an actually published version tag and validate it before production use.
 
 ## Backup
-
-The important state is the project configuration, not the container.
 
 Back up:
 
 ```text
-compose.yaml
+compose.yml
 .env
 config/
 ```
 
-Example manual backup:
+Caches and logs are disposable and excluded from Git.
+
+## Audit details
+
+See:
+
+- `docs/AUDIT.md` for the complete review and remaining decisions.
+- `docs/COLLECTION-INVENTORY.md` for all 185 collection definitions.
+
+
+## Cross-Library Playlists
+
+Playlists run weekly on Saturday. The MCU is split by media type to avoid one oversized mixed playlist:
+
+- MCU Movies (Timeline Order) — `Movies` only
+- MCU TV (Timeline Order) — `TV Shows` only
+
+Kometa's maintained Playlist Default remains enabled across `Movies` and `TV Shows` for:
+
+- Arrowverse
+- DC Animated Universe
+- Star Wars
+- Star Wars: The Clone Wars
+- Star Trek
+- X-Men
+
+The default combined MCU playlist is disabled because the two local MCU playlists replace it. Dragon Ball and Pokémon remain disabled because those defaults use MDBList and would also need the `Anime` library included.
+
+## GitHub repository setup
+
+This repository is safe to commit as long as `.env` remains ignored. Create the local secret file from the example:
 
 ```bash
-sudo cp -a \
-  /volume1/docker/kometa \
-  /volume1/docker/kometa-backup
+cp .env.example .env
 ```
 
-Protect backups containing `.env` because they contain API credentials.
+Then validate before starting the persistent container:
 
-## Maintenance Workflow
-
-For normal changes:
-
-```text
-Config change
-    ↓
-Full validation
-    ↓
-Manual run
-    ↓
-Verify Plex
+```bash
+./scripts/validate.sh
+sudo docker compose up -d
 ```
 
-For `.env` changes:
+To initialize a new Git repository:
 
-```text
-Secret change
-    ↓
-Recreate container
-    ↓
-Full validation
-    ↓
-Manual run if needed
+```bash
+git init
+git add .
+git commit -m "Initial Kometa configuration"
+git branch -M main
 ```
 
-For Kometa upgrades:
+Add your GitHub remote and push when ready.
 
-```text
-Pull image
-    ↓
-Recreate container
-    ↓
-Full validation
-    ↓
-Manual run if needed
-```
+### Binary artwork
+
+The current audited source did not include the JMXD PNG artwork referenced by the overlay configuration. The repository includes placeholder directories and `config/overlays/jmxd/README.md`; copy the working PNGs from the NAS if you want GitHub to contain a fully restorable overlay stack.

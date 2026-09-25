@@ -16,7 +16,7 @@ collections:
     template: {name: Studio, poster: 40928 }
     imdb_search: 
       list: ls077827588
-    summary: The DC Extended Universe (DCEU) is a media franchise and shared universe centered on superheros from DC Comics.
+    summary: The DC Extended Universe (DCEU) is a media franchise and shared universe centered on superheroes from DC Comics.
   Disney Animation Studios:
     template: { name: Studio, company: 6125, poster: 11782 }
   Disney Pictures:
@@ -33,7 +33,7 @@ collections:
     template: { name: Studio, poster: 162885 }
     imdb_search: 
       list: ls009410711
-    summary: A collection of movies and shows created by Marvel Studios, comprising of the Marvel Cinematic Universe.
+    summary: A collection of movies created by Marvel Studios as part of the Marvel Cinematic Universe.
   Pixar:
     template: { name: Studio, company: 3, poster: 36071 }
   Sony Pictures Animation:

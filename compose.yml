@@ -1,0 +1,19 @@
+name: kometa
+
+services:
+  kometa:
+    # Kometa's official stable/master Docker branch.
+    image: kometateam/kometa:v2.5.1
+    container_name: kometa
+
+    env_file:
+      - .env
+
+    environment:
+      TZ: America/New_York
+      KOMETA_TIMES: "03:00"
+
+    volumes:
+      - ./config:/config:rw
+
+    restart: unless-stopped

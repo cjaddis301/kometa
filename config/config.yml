@@ -1,0 +1,168 @@
+libraries:
+  Anime:
+    remove_overlays: false
+    collection_files:
+      - file: config/anime/anime-franchise.yml
+      - file: config/anime/anime-studios.yml
+      - file: config/anime/anime.yml
+
+  Movies:
+    remove_overlays: false
+    collection_files:
+      - file: config/movies/movies-decades.yml
+        schedule: weekly(sunday)
+      - file: config/movies/movies-studios.yml
+      - file: config/movies/movies.yml
+    overlay_files:
+      - file: config/overlays/jmxd/gradient.yml
+      - default: resolution
+        template_variables:
+          file: config/overlays/jmxd/resolution/<<key>><<alt>>.png
+          use_resolution: true
+          use_edition: false
+          horizontal_offset: 50
+          horizontal_align: left
+          vertical_offset: 50
+          vertical_align: top
+          back_radius: 0
+          back_align: left
+          back_color: "#00000000"
+          back_height: 50
+      - default: audio_codec
+        template_variables:
+          file: config/overlays/jmxd/audio_codec/<<key>>.png
+          horizontal_offset: 50
+          horizontal_align: right
+          vertical_offset: 50
+          vertical_align: top
+          back_radius: 0
+          back_align: right
+          back_color: "#00000000"
+          back_height: 50
+      - default: resolution
+        template_variables:
+          file: config/overlays/jmxd/edition/<<key>>.png
+          use_resolution: false
+          use_edition: true
+          horizontal_offset: 0
+          horizontal_align: center
+          vertical_offset: 0
+          vertical_align: bottom
+          back_radius: 0
+          back_color: "#00000000"
+          back_height: 153
+
+  Stand-up:
+    remove_overlays: false
+    overlay_files:
+      - file: config/overlays/jmxd/gradient.yml
+      - default: resolution
+        template_variables:
+          file: config/overlays/jmxd/resolution/<<key>><<alt>>.png
+          use_resolution: true
+          use_edition: false
+          horizontal_offset: 50
+          horizontal_align: left
+          vertical_offset: 50
+          vertical_align: top
+          back_radius: 0
+          back_align: left
+          back_color: "#00000000"
+          back_height: 50
+      - default: audio_codec
+        template_variables:
+          file: config/overlays/jmxd/audio_codec/<<key>>.png
+          horizontal_offset: 50
+          horizontal_align: right
+          vertical_offset: 50
+          vertical_align: top
+          back_radius: 0
+          back_align: right
+          back_color: "#00000000"
+          back_height: 50
+
+  TV Shows:
+    remove_overlays: false
+    collection_files:
+      - file: config/tv/tv-networks.yml
+        schedule: weekly(sunday)
+    overlay_files:
+      - default: network
+        template_variables:
+          vertical_align: bottom
+          vertical_offset: 15
+          horizontal_align: left
+          horizontal_offset: 15
+
+settings:
+  # Make processing order explicit.
+  run_order:
+    - operations
+    - metadata
+    - collections
+    - overlays
+
+  # Cache is critical for avoiding unnecessary overlay re-application/image bloat.
+  cache: true
+  cache_expiration: 60
+
+  # Preserve the asset behavior from the original working configuration.
+  asset_directory: config/assets
+  asset_folders: true
+  create_asset_folders: false
+  prioritize_assets: false
+  dimensional_asset_rename: false
+  download_url_assets: true
+  show_missing_season_assets: false
+  show_missing_episode_assets: false
+
+  # Keep reporting/runtime behavior that intentionally differs from current defaults.
+  save_report: false
+  delete_below_minimum: true
+  missing_only_released: true
+
+  # Preserve the existing overlay output format while making quality explicit.
+  overlay_artwork_filetype: jpg
+  overlay_artwork_quality: 90
+
+webhooks:
+  # High-signal notifications only: errors plus one end-of-run summary.
+  error: notifiarr
+  run_end: notifiarr
+
+playlist_files:
+  # MCU is split by media type so the very large combined timeline is easier to use.
+  - file: config/playlists/marvel.yml
+    schedule: weekly(saturday)
+
+  # Kometa-maintained cross-library timeline playlists for franchises already
+  # represented in this Plex configuration. Runs weekly to avoid unnecessary work.
+  - default: playlist
+    schedule: weekly(saturday)
+    template_variables:
+      libraries: Movies, TV Shows
+      use_arrow: true
+      use_dcau: true
+      use_dragonball: false
+      use_pokemon: false
+      use_mcu: false
+      use_starwars: true
+      use_clonewars: true
+      use_startrek: true
+      use_xmen: true
+
+plex:
+  # Connection detail is not secret; keeping it here avoids env-substitution failures.
+  url: http://192.168.4.193:32400
+  token: <<plextoken>>
+  timeout: 60
+  clean_bundles: false
+  empty_trash: false
+  optimize: false
+
+tmdb:
+  apikey: <<tmdbkey>>
+  language: en
+
+notifiarr:
+  apikey: <<notifiarrkey>>

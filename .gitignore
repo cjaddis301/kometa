@@ -17,7 +17,8 @@ config/logs/
 config/missing/
 config/UUID
 
-# Logs
+# Local audit/backup archives
+kometa-*.tar.gz
 *.log
 logs/
 

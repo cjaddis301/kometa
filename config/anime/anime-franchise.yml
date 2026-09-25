@@ -1,0 +1,69 @@
+# Anime Franchise Collections
+# Plex string filters require multiple values to be expressed as a YAML list.
+templates:
+  Franchise:
+    collection_order: release.asc
+    sync_mode: sync
+    sort_title: "!B <<collection_name>>"
+
+collections:
+  Digimon:
+    template: { name: Franchise }
+    plex_search:
+      any:
+        title:
+          - digimon
+
+  Dragon Ball:
+    template: { name: Franchise }
+    plex_search:
+      any:
+        title:
+          - dragon ball
+
+  Fate Series:
+    template: { name: Franchise }
+    plex_search:
+      any:
+        title:
+          - fate/stay
+          - fate/zero
+          - fate/apocrypha
+          - fate/kaleid
+          - fate/grand order
+
+  Fullmetal Alchemist:
+    template: { name: Franchise }
+    plex_search:
+      any:
+        title:
+          - fullmetal alchemist
+
+  Mobile Suit Gundam:
+    template: { name: Franchise }
+    plex_search:
+      any:
+        title:
+          - gundam
+
+  Naruto Series:
+    template: { name: Franchise }
+    plex_search:
+      any:
+        title:
+          - naruto
+          - boruto
+
+  Steins;Gate:
+    template: { name: Franchise }
+    plex_search:
+      any:
+        title:
+          - steins;gate
+
+  Sword Art Online:
+    template: { name: Franchise }
+    plex_search:
+      any:
+        title:
+          - sword art online

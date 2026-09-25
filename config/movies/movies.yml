@@ -11,7 +11,6 @@ templates:
     sort_title: "<<collection_name>>" 
     collection_order: release     
     sync_mode: sync
-    schedule: daily
 
 collections:
 #####################################
